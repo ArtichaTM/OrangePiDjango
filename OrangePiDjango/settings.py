@@ -24,7 +24,10 @@ SECRET_KEY = getenv('SECRET_KEY')
 
 DEBUG = bool(getenv('DEBUG', False))
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = [
+    '192.168.0.3',
+    'articha.tplinkdns.com'
+]
 
 
 # Application definition

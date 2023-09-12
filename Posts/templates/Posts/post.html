@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load str_cut %}
+
+{% block title %}{{ post.header|str_cut:14 }}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/Posts/post.css' %}">
+{% endblock %}
+
+{% block body %}
+    <article class="post">
+        <header>{{ post.header }}</header>
+        <table class="text-root-table"><tbody><tr class="text-content-row">
+            <th class="text-left"></th>
+            <th class="text-center">{{ post.text|safe }}</th>
+            <th class="text-right"></th>
+        </tr></tbody></table>
+    </article>
+    <section class="post-comments">
+        <h1>{% trans 'Comments' %}</h1>
+        <ul>
+            {% include 'Posts/subtemplates/new_comment.html' %}
+            {% for comment in post.comments.all %}
+                {% include 'Posts/subtemplates/comment.html' with comment=comment %}
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/Posts/new_comment.js' %}"></script>
+    <script type="text/javascript">
+        let ADD_COMMENT_URL = "{% url 'Posts:add_comment' post.id %}"
+    </script>
+{% endblock %}

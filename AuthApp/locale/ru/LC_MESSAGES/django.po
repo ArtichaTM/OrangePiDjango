@@ -1,0 +1,78 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-06 08:23+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\AuthApp\forms.py:44
+#, python-format
+msgid "Password should contain at least %(amount)s symbols"
+msgstr "Пароль должен содержать не менее %(amount)s символов"
+
+#: .\AuthApp\forms.py:52
+#, python-format
+msgid "Password should contain at least %(amount)s unique symbols"
+msgstr "Пароль должен содержать не менее %(amount)s уникальных символов"
+
+#: .\AuthApp\forms.py:63
+#, python-format
+msgid "Username should contain at least %(amount)s symbols"
+msgstr "Имя пользователя должно содержать не менее %(amount)s символов"
+
+#: .\AuthApp\forms.py:69
+msgid "Username should start with letter"
+msgstr "Имя пользователя должно начинаться с буквы"
+
+#: .\AuthApp\templates\AuthApp\auth.html:9
+msgid "Authorization"
+msgstr "Авторизация"
+
+#: .\AuthApp\templates\AuthApp\auth.html:20
+#: .\AuthApp\templates\AuthApp\auth.html:43
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: .\AuthApp\templates\AuthApp\auth.html:25
+#: .\AuthApp\templates\AuthApp\auth.html:48
+msgid "Password"
+msgstr "Пароль"
+
+#: .\AuthApp\templates\AuthApp\auth.html:30
+msgid "Log-in"
+msgstr "Вход"
+
+#: .\AuthApp\templates\AuthApp\auth.html:38
+msgid "E-mail"
+msgstr "Электронная почта"
+
+#: .\AuthApp\templates\AuthApp\auth.html:53
+msgid "Sign-up"
+msgstr "Зарегистрироваться"
+
+#: .\AuthApp\views.py:63
+msgid "Account created. Wait for activation by administrator"
+msgstr "Аккаунт создан. Ожидайте активации администратором"
+
+#: .\AuthApp\views.py:90
+msgid "Can't find target language"
+msgstr "Такого языка у нас нет"
+
+#: .\AuthApp\views.py:103
+msgid "Can't find target theme"
+msgstr "Такой темы у нас нет"

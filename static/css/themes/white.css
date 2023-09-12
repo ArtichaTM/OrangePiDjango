@@ -1,0 +1,20 @@
+:root {
+    --color-accent: green;
+    --color-accent-dark: darkgreen;
+    --color-main: black;
+    --color-main-dark: dimgrey;
+    --color-background: white;
+    --color-background-dark: #eaeaea;
+    --color-error: red;
+
+    --rgbcolor-accent: 0, 128, 0;
+    --rgbcolor-accent-dark: 0, 100, 0;
+    --rgbcolor-main: 0, 0, 0;
+    --rgbcolor-main-dark: 105, 105, 105;
+    --rgbcolor-background: 255, 255, 255;
+    --rgbcolor-background-dark: 234, 234, 234;
+    --rgbcolor-error: 255, 0, 0;
+
+
+    --hightlight-transition: 0.2s ease;
+}

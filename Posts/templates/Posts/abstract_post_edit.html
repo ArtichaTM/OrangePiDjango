@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/Posts/abstract_post_edit.css' %}">
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% endblock %}
+
+{% block body %}
+    <section class="justified_div">
+        <form action="{% block action %}{% endblock %}" method="{% block method %}post{% endblock %}">
+            {% csrf_token %}
+            <label for="header">
+                <input type="text" class="header-text" name="header" required maxlength="60" minlength="7" placeholder="{% trans 'Header' %}">
+            </label>
+            {% if form.header.errors %}
+                {% for error in form.header.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <label for="text">
+                {{ postForm.text }}
+            </label>
+            {% if form.text.errors %}
+                {% for error in form.text.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <button type="submit">{% block submit_text %}{% endblock %}</button>
+        </form>
+    </section>
+{% endblock %}

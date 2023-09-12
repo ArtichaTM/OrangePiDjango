@@ -1,0 +1,83 @@
+.login-page {
+
+    /*Centering*/
+    display: flex;
+    justify-content: center;
+
+    padding: 8% 0 0;
+}
+
+.forms {
+    background: rgba(var(--rgbcolor-background-dark), 0.1) inherit;
+    max-width: 720px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 var(--color-accent), 0 5px 5px 0 var(--color-accent);
+    gap: 45px;
+
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    border-radius: 10px;
+}
+
+.forms input {
+    outline: 0;
+    border: 0;
+    background: rgba(var(--rgbcolor-background-dark), 0.5);
+    width: 100%;
+    margin: 7px 0 7px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: var(--color-main);
+    transition: 0.2s ease;
+}
+
+.forms input:hover {
+    background: rgba(var(--rgbcolor-background-dark), 0.3);
+    box-shadow: 0 0 4px var(--color-accent);
+}
+
+.forms input:focus {
+    background: rgba(var(--rgbcolor-background-dark), 0);
+    box-shadow: 0 0 8px var(--color-accent);
+}
+
+/* Hack to disable light with autofill */
+.forms input:-webkit-autofill {
+    box-shadow: 0 0 0 30px var(--color-background-dark) inset;
+    color: var(--color-main);
+    -webkit-text-fill-color: var(--color-main)
+}
+
+
+.forms button {
+    outline: 0;
+    background: rgba(0, 255, 41, 0.3);
+    width: 100%;
+    border: 0;
+    margin-top: 10px;
+    padding: 15px;
+    color: var(--color-main);
+    font-size: 16px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.forms button:hover, .form button:active, .form button:focus {
+    background: rgba(0, 255, 41, 0.5);
+    box-shadow: 0 0 20px 0 var(--color-accent);
+}
+
+.forms form {
+    flex: 1;
+    min-width: 220px
+}
+
+.forms .error {
+    color: rgba(var(--rgbcolor-error), 0.8);
+    text-align: left;
+}

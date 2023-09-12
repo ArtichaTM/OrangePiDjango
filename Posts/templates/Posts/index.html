@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load str_cut %}
+
+{% block title %}{% trans 'Posts' %}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/Posts/index.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div class="add_post">
+        <a
+                href="{% url 'Posts:new_post' %}"
+                data-hover="{% trans 'New post' %}"
+                class="a-hover-href hover_replace_content"
+                style="transition: none"
+        >+</a>
+    </div>
+    <section class="articles">
+        {% for post in posts %}
+            <article class = "post">
+                <header>
+                    <div></div>
+                    <h1 class="header_text">
+                        <a href="{% url 'Posts:view_post' post.id %}">{{ post.header }}</a>
+                    </h1>
+                    <div>
+                        {% if user == post.author %}
+                        <a href="{% url 'Posts:edit_post' post.id %}" title="{% trans 'Edit post' %}"><svg data-name="edit_icon" viewBox="0 0 24 24">
+                            <path d="M3.5,24h15A3.51,3.51,0,0,0,22,20.487V12.95a1,1,0,0,0-2,0v7.537A1.508,1.508,0,0,1,18.5,22H3.5A1.508,1.508,0,0,1,2,20.487V5.513A1.508,1.508,0,0,1,3.5,4H11a1,1,0,0,0,0-2H3.5A3.51,3.51,0,0,0,0,5.513V20.487A3.51,3.51,0,0,0,3.5,24Z"></path>
+                            <path d="M9.455,10.544l-.789,3.614a1,1,0,0,0,.271.921,1.038,1.038,0,0,0,.92.269l3.606-.791a1,1,0,0,0,.494-.271l9.114-9.114a3,3,0,0,0,0-4.243,3.07,3.07,0,0,0-4.242,0l-9.1,9.123A1,1,0,0,0,9.455,10.544Zm10.788-8.2a1.022,1.022,0,0,1,1.414,0,1.009,1.009,0,0,1,0,1.413l-.707.707L19.536,3.05Zm-8.9,8.914,6.774-6.791,1.4,1.407-6.777,6.793-1.795.394Z"></path>
+                        </svg></a>
+                        {% endif %}
+                    </div>
+                </header>
+                <div class="content">
+                    {{ post.short_text|safe }}
+                </div>
+                <footer>
+                    <table><tr class="footer_info">
+                        <td>
+                            <a href="{% url 'AuthApp:profile_id' post.author.id %}" class="a-hover-href">{{ post.author.username }}</a>
+                        </td>
+                        <td><a class="a-hover-href" href="{% url 'Posts:view_post' post.id %}#post_comments">
+                            {% trans 'Comments' %}
+                        </a> ({{ post.comments.count }})</td>
+                        <td>{{ post.date_created|date:'Y-m-d H:i' }}</td>
+                    </tr></table>
+                </footer>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}

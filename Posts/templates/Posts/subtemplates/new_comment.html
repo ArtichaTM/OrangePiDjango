@@ -1,0 +1,15 @@
+{% load i18n %}
+<li><form class="new-comment">
+    {% csrf_token %}
+    <input type="hidden" value="{% if parent_comment_id %}{{ parent_comment_id }}{% endif %}">
+    {% for error in form.non_field_errors %}
+        <p class="error">{{ error }}</p>
+    {% endfor %}
+    <div>
+        <label><textarea name="text" placeholder="{% trans 'Comment text' %}">{{ forms.text }}</textarea></label>
+        <button onclick="add_comment(this)" type="button"><svg focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg></button>
+    </div>
+    {% for error in form.text.errors %}
+        <p class="error">{{ error }}</p>
+    {% endfor %}
+</form></li>

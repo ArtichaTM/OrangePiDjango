@@ -1,0 +1,79 @@
+{% load i18n %}
+{% load static %}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
+
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% translate 'Home page' %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% with "css/themes/"|add:request.COOKIES.selectedTheme as img_src %}
+        <link rel="stylesheet" href="{% static img_src %}">
+    {% endwith %}
+    {% block head %}{% endblock %}
+    {% block favicon %}<link rel="shortcut icon" href="{% static 'favicon/favicon.png' %}"/>{% endblock %}
+</head>
+<body>
+{% if user.is_authenticated %}
+    <nav class="navMenu">
+        <a href="{% url 'AuthApp:index' %}" class="a-hover-href">{% trans 'Home' %}</a>
+        <a href="{% url 'Posts:index' %}" class="a-hover-href">{% trans 'Posts' %}</a>
+        <a href="{% url 'Forum:index' %}" class="a-hover-href">{% trans 'Forum' %}</a>
+        <a href="{% url 'AuthApp:profile_id' user.id %}" class="a-hover-href">
+            {% if user.name == 'User' %}
+                {% trans 'My profile' %}
+            {% else %}
+                {{ user.name }}
+            {% endif %}
+        </a>
+        <a href="{% url 'AuthApp:post_logout' %}" class="a-hover-href">{% trans 'Logout' %}</a>
+    </nav>
+{% endif %}
+<main id="mainBody">
+    {% block body %}{% endblock %}
+</main>
+<footer id="mainFooter">
+    {% block footer %}
+        <div class="footerMenu">
+            <div class="footerMenuLine footerMenuLineSelected">
+                {% with "icons/languages/"|add:lang.code|add:'.png' as img_src %}
+                    <img src="{% static img_src %}" alt="language_icon"/>
+                {% endwith %}
+                <a>{{ lang.name }}</a>
+            </div>
+            {% if languages %}
+                <ul>
+                    {% for optional_lang in languages %}
+                        {% if optional_lang != lang %}
+                            <li class="footerMenuLine"><a href="{% url 'AuthApp:change_language' optional_lang.code %}">
+                                {% with "icons/languages/"|add:optional_lang.code|add:'.png' as img_src %}
+                                    <img src="{% static img_src %}" alt="language_icon"/>
+                                {% endwith %}
+                                <p>{{ optional_lang.name }}</p>
+                            </a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="footerMenu">
+            <div class="footerMenuLine footerMenuLineSelected">
+                {% trans 'Themes' %}
+            </div>
+            <ul>
+                {% for theme in THEMES_AVAILABLE %}
+                    <li class="footerMenuLine"><a href="{% url 'AuthApp:change_theme' theme %}">{% trans theme %}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endblock %}
+</footer>
+</body>
+{% block scripts %}{% endblock %}
+</html>

@@ -1,0 +1,208 @@
+@font-face {
+    font-family: 'Manrope';
+    src: url('../fonts/Manrope/Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../fonts/Manrope/Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../fonts/Manrope/ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../fonts/Manrope/Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../fonts/Manrope/SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../fonts/Manrope/Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../fonts/Manrope/ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    background-color: var(--color-background);
+}
+
+.navMenu {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.navMenu > a {
+    border: 2px solid var(--color-accent);
+    border-radius: 2em;
+    padding: 6px;
+    text-decoration: none;
+    text-emphasis: none;
+    color: var(--color-main);
+    min-width: fit-content;
+    word-wrap: revert;
+    font-weight: 500;
+}
+
+#mainBody {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 8px;
+    min-height: 90vh;
+    color: var(--color-main-dark);
+    fill: var(--color-main-dark);
+}
+
+#mainFooter {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 40px;
+    min-width: 20px;
+}
+
+
+/* Language switcher in footer */
+
+
+.footerMenu {
+    --footerMenu-border-radius: 1em;
+    position: relative;
+    display: inline-block;
+    color: var(--color-main);
+}
+
+.footerMenu:hover > ul {
+    display: flex;
+}
+
+.footerMenu:hover .footerMenuLineSelected {
+    opacity: 0;
+}
+
+.footerMenu > ul {
+    background-color: var(--color-background);
+    position: absolute;
+    bottom: -20px;
+    display: none;
+    flex-direction: column;
+    border-radius: var(--footerMenu-border-radius);
+    box-sizing: content-box;
+    padding: 0;
+    left: -5px;
+    box-shadow: 0 1px 7px var(--color-accent);
+    transition: 0.2s ease;
+}
+
+.footerMenu > ul > li:first-child {
+    border-top-left-radius: var(--footerMenu-border-radius);
+    border-top-right-radius: var(--footerMenu-border-radius);
+}
+
+.footerMenu > ul > li:last-child {
+    border-bottom-left-radius: var(--footerMenu-border-radius);
+    border-bottom-right-radius: var(--footerMenu-border-radius);
+}
+
+.footerMenuLine:hover {
+    background: rgba(var(--rgbcolor-main), 0.1);
+}
+
+.footerMenuLine {
+    display: flex;
+    flex-direction: row;
+    transition: 0.2s ease;
+}
+
+.footerMenuLine > a {
+    display: inherit;
+    text-decoration: none;
+    color: inherit;
+    cursor: default;
+    padding: 5px;
+}
+
+.footerMenuLine img {
+    width: 24px;
+    height: 24px;
+    margin-right: 7px;
+}
+
+.footerMenuLine > a:hover {
+    cursor: pointer;
+}
+
+.footerMenuLine > a > p {
+    margin-block: 0;
+}
+
+.footerMenuLineSelected:hover {
+    cursor: default;
+}
+
+.footerMenuLineSelected > a {
+    padding: 0;
+}
+
+.footerMenuLineSelected:hover > a {
+    cursor: default;
+}
+
+/* Additional styles for inheriting HTML files */
+
+.a-hover-href {
+    border-color: inherit;
+    text-shadow: inherit;
+    text-decoration: none;
+    transition: var(--hightlight-transition);
+    color: inherit;
+}
+
+.a-hover-href:hover {
+    border-color: var(--color-accent-dark);
+    color: var(--color-accent);
+    text-shadow: var(--color-accent-dark) 0 0 1px;
+    cursor: pointer;
+}
+
+
+.hover_replace_content:hover {
+    font-size: 0;
+}
+
+.hover_replace_content:hover:after {
+    content: attr(data-hover);
+    font-size: 14px;
+    line-height: 18px;
+    transition: none;
+}

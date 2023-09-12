@@ -1,0 +1,34 @@
+{% extends "Posts/abstract_post_edit.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'Post edit' %}{% endblock %}
+
+{% block action %}{% url 'Posts:update_post' post.id %}{% endblock %}
+{% block method %}post{% endblock %}
+
+{% block submit_text %}{% trans 'Update' %}{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+
+    {# Script to add text into CkEditor textarea #}
+    <script type="text/javascript">
+    function update_text(counter) {
+        if (counter === 5) {
+            return
+        }
+
+        try {
+            CKEDITOR.instances.id_text.setData('{{ post.text|escapejs }}')
+        } catch (TypeError) {
+            setTimeout(update_text, counter+1)
+        }
+    }
+    update_text(0)
+    </script>
+
+    {# Update header #}
+    <script type="text/javascript">
+    document.getElementsByClassName('header-text')[0].value = '{{ post.header|escapejs }}'
+    </script>
+{% endblock %}

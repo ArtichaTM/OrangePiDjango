@@ -1,0 +1,118 @@
+.add_post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    min-height: 50px;
+}
+
+.add_post > a {
+    background: inherit;
+    border: 2px solid;
+    border-radius: 5px;
+    border-color: var(--color-accent);
+    text-decoration: none;
+    color: var(--color-main);
+    height: fit-content;
+    padding: 0 5px ;
+}
+
+.add_post > a:hover {
+    height: fit-content;
+    padding: 10px 10px;
+}
+
+.articles {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 50%;
+    padding: 20px;
+    gap: 20px;
+}
+
+.post {
+    border-radius: 5px;
+    background: rgba(var(--rgbcolor-background-dark), 0.2);
+    padding: 20px;
+    box-shadow: black 0 0 5px;
+    min-width: 200px;
+}
+
+.post > header {
+    text-align: center;
+    vertical-align: text-bottom;
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0;
+    color: var(--color-main);
+}
+
+.post > header > *:first-child {
+    min-width: 10%;
+    text-align: left;
+}
+
+
+.post > header > *:last-child {
+    min-width: 10%;
+    text-align: right;
+}
+
+.post > header > *:nth-child(odd) > a svg {
+    height: 16px;
+    width: 16px;
+    fill: var(--color-main);
+    transition: var(--hightlight-transition);
+}
+
+.post > header > *:nth-child(odd) > a:hover svg {
+    fill: var(--color-accent);
+}
+
+.post > header ~ * {
+    text-wrap: normal;
+    word-wrap: break-word;
+    color: var(--color-main);
+}
+
+.header_text {
+    margin: 0;
+}
+
+.header_text > a {
+    text-decoration: inherit;
+    text-emphasis: inherit;
+    color: var(--color-main);
+}
+
+.header_text > a:hover {
+    color: var(--color-accent);
+}
+
+.post > footer {
+    text-align: right;
+}
+
+.post > footer > table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.footer_info > td {
+    text-align: center;
+}
+
+.footer_info > td:first-child {
+    text-align: left;
+
+    text-decoration: none;
+}
+
+.footer_info > td:last-child {
+    text-align: right;
+}

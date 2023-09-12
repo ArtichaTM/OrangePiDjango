@@ -1,0 +1,8 @@
+{% extends "Posts/abstract_post_edit.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'New post' %}{% endblock %}
+
+{% block action %}{% url 'Posts:add_post' %}{% endblock %}
+
+{% block submit_text %}{% trans 'Publish' %}{% endblock %}

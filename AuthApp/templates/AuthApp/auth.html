@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static "css/AuthApp/auth.css" %}">
+{% endblock %}
+
+{% block title %}{% trans 'Authorization' %}{% endblock %}
+
+{% block body %}
+<div class="login-page">
+    <div class="forms">
+        <form class="login-form" method="POST" action="login">
+            {% csrf_token %}
+            {% for error in LogForm.non_field_errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+
+            <label><input type="text" name="username" placeholder="{% trans 'Username' %}"/></label>
+            {% for error in LogForm.username.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+
+            <label><input type="password" name="password" placeholder="{% trans 'Password' %}"/></label>
+            {% for error in LogForm.password.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+
+            <button>{% trans 'Log-in' %}</button>
+        </form>
+        <form class="register-form" method="POST" action="signin">
+            {% csrf_token %}
+            {% for error in SignForm.non_field_errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+
+            <label><input type="text" name="email" placeholder="{% trans 'E-mail' %}"/></label>
+            {% for error in SignForm.email.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+
+            <label> <input type="text" name="username" placeholder="{% trans 'Username' %}"/></label>
+            {% for error in SignForm.username.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+
+            <label><input type="password" name="password1" placeholder="{% trans 'Password' %}"/></label>
+            {% for error in SignForm.password1.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+
+            <button>{% trans 'Sign-up' %}</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
